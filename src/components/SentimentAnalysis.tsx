@@ -34,7 +34,14 @@ const SentimentAnalysis = () => {
       const output = await classifier(text);
       console.log('Sentiment analysis result:', output);
       
-      setResult(output[0]);
+      // Convert the output to our SentimentResult format
+      const outputArray = Array.isArray(output) ? output : [output];
+      const formattedResult: SentimentResult = {
+        label: outputArray[0].label,
+        score: outputArray[0].score
+      };
+      
+      setResult(formattedResult);
     } catch (err) {
       console.error('Sentiment analysis error:', err);
       setError('Failed to analyze sentiment. Please try again.');

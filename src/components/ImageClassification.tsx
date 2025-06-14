@@ -49,7 +49,15 @@ const ImageClassification = () => {
       const output = await classifier(image);
       console.log('Classification results:', output);
       
-      setResults(output.slice(0, 5)); // Show top 5 predictions
+      // Convert the output to our ClassificationResult format
+      const formattedResults: ClassificationResult[] = (Array.isArray(output) ? output : [output])
+        .slice(0, 5)
+        .map((item: any) => ({
+          label: item.label,
+          score: item.score
+        }));
+      
+      setResults(formattedResults);
     } catch (err) {
       console.error('Classification error:', err);
       setError('Failed to classify image. Please try again.');
