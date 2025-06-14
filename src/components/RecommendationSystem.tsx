@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart, IndianRupee } from 'lucide-react';
 
 interface Product {
   id: number;
@@ -26,7 +25,7 @@ const RecommendationSystem = () => {
       id: 1,
       name: "Wireless Bluetooth Headphones",
       category: "Electronics",
-      price: 99.99,
+      price: 7999,
       rating: 4.5,
       description: "High-quality wireless headphones with noise cancellation",
       image: "🎧"
@@ -35,7 +34,7 @@ const RecommendationSystem = () => {
       id: 2,
       name: "Yoga Mat",
       category: "Fitness",
-      price: 29.99,
+      price: 2499,
       rating: 4.2,
       description: "Non-slip yoga mat for all types of yoga practice",
       image: "🧘"
@@ -44,7 +43,7 @@ const RecommendationSystem = () => {
       id: 3,
       name: "Coffee Maker",
       category: "Kitchen",
-      price: 149.99,
+      price: 12499,
       rating: 4.7,
       description: "Programmable coffee maker with thermal carafe",
       image: "☕"
@@ -53,7 +52,7 @@ const RecommendationSystem = () => {
       id: 4,
       name: "Smart Watch",
       category: "Electronics",
-      price: 299.99,
+      price: 24999,
       rating: 4.4,
       description: "Fitness tracking smartwatch with heart rate monitor",
       image: "⌚"
@@ -62,7 +61,7 @@ const RecommendationSystem = () => {
       id: 5,
       name: "Running Shoes",
       category: "Fitness",
-      price: 89.99,
+      price: 7499,
       rating: 4.3,
       description: "Lightweight running shoes with excellent cushioning",
       image: "👟"
@@ -71,7 +70,7 @@ const RecommendationSystem = () => {
       id: 6,
       name: "Blender",
       category: "Kitchen",
-      price: 79.99,
+      price: 6499,
       rating: 4.1,
       description: "High-speed blender perfect for smoothies and soups",
       image: "🥤"
@@ -80,7 +79,7 @@ const RecommendationSystem = () => {
       id: 7,
       name: "Laptop Stand",
       category: "Electronics",
-      price: 39.99,
+      price: 3299,
       rating: 4.6,
       description: "Adjustable laptop stand for better ergonomics",
       image: "💻"
@@ -89,7 +88,7 @@ const RecommendationSystem = () => {
       id: 8,
       name: "Resistance Bands",
       category: "Fitness",
-      price: 24.99,
+      price: 1999,
       rating: 4.0,
       description: "Set of resistance bands for strength training",
       image: "💪"
@@ -214,7 +213,10 @@ const RecommendationSystem = () => {
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       <span className="text-sm">{product.rating}</span>
                     </div>
-                    <p className="text-lg font-bold">${product.price}</p>
+                    <div className="flex items-center justify-center space-x-1">
+                      <IndianRupee className="h-4 w-4" />
+                      <span className="text-lg font-bold">{product.price.toLocaleString('en-IN')}</span>
+                    </div>
                     <Button
                       size="sm"
                       onClick={() => handleLikeProduct(product.id)}
@@ -249,7 +251,12 @@ const RecommendationSystem = () => {
                         <p className="text-sm text-gray-600">{product.description}</p>
                         <div className="flex items-center justify-between mt-2">
                           <Badge variant="outline">{product.category}</Badge>
-                          <span className="font-bold text-blue-600">${product.price}</span>
+                          <div className="flex items-center space-x-1">
+                            <IndianRupee className="h-4 w-4 text-blue-600" />
+                            <span className="font-bold text-blue-600">
+                              {product.price.toLocaleString('en-IN')}
+                            </span>
+                          </div>
                         </div>
                         <div className="flex items-center space-x-1 mt-1">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
